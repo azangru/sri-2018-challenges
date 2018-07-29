@@ -11,12 +11,6 @@
   padding-left: 26px;
 }
 
-.main-area__widgets {
-  background: red;
-  padding-right: 20px;
-  height: 100%;
-}
-
 .main-area__salutation {
   margin-top: 30px;
   font-size: 27px;
@@ -57,6 +51,78 @@
 
 .main-area__outdoors-climate-weather-icon {
   margin-left: 8px;
+}
+
+.main-area__widgets {
+  position: relative;
+  width: 220px;
+  height: 331px;
+  overflow: hidden;
+}
+
+.main-area__widgets-inner-wrapper {
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  padding-right: 40px;
+  overflow-y: auto;
+}
+
+.main-area__widgets-inner-wrapper .device-widget {
+  margin-bottom: 15px;
+}
+
+.main-area__widgets-inner-wrapper .device-widget:first-of-type {
+  margin-top: 20px;
+}
+
+.main-area__widgets-inner-wrapper .device-widget:last-of-type {
+  margin-bottom: 20px;
+}
+
+.main-area__widgets-scroll-up, .main-area__widgets-scroll-down {
+  position: absolute;
+  height: 41px;
+  width: 200px;
+  background: #F7F7F7;
+  cursor: pointer;
+}
+
+.main-area__widgets-scroll-up {
+  top: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.main-area__widgets-scroll-down {
+  bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.main-area__widgets-scroll-up:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 4px);
+  background-image: url('../../assets/icons/arrow-double.svg');
+  transform: rotate(180deg);
+}
+
+.main-area__widgets-scroll-down:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 4px);
+  background-image: url('../../assets/icons/arrow-double.svg');
+}
+
+.main-area__widgets-scroll-up_hidden, .main-area__widgets-scroll-down_hidden {
+  display: none;
 }
 
 /* Retina-specific */

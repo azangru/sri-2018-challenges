@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "http-server": "0.11.1",
-    "hyperscript": "2.0.2"
+    "hyperscript": "2.0.2",
+    "scroll-js": "1.9.1"
   }
 }

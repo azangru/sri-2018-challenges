@@ -10,7 +10,13 @@ export const mainAreaDevices = [
     message: 'Включится в 17:00',
     icon: 'sun',
     isOn: false
-  }
+  },
+  {
+    name: 'Elgato Eve Degree Connected',
+    message: 'Выключено до 17:00',
+    icon: 'thermometer',
+    isOn: false
+  },
 ];
 
 export const selectedDevices = [

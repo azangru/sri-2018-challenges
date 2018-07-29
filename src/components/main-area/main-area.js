@@ -1,4 +1,5 @@
 import h from 'hyperscript';
+import Scroll from 'scroll-js';
 
 import userData from 'data/user';
 import miscellaneousData from 'data/miscellaneous';
@@ -9,6 +10,10 @@ import renderDeviceWidget from 'components/device-widget';
 import drizzleIconPath from 'assets/icons/cloud-drizzle.svg';
 
 import './main-area.css';
+
+const NUMBER_OF_WIDGETS_THAT_FIT_VERTICALLY = 2;
+const WIDGET_HEIGHT = 120;
+const WIDGET_MARGIN = 15;
 
 const renderMainArea = () => {
   return h('div.main-area',
@@ -65,8 +70,75 @@ const renderWeatherIcon = (weather) => {
 
 const renderWidgets = () => {
   return h('div.main-area__widgets',
-    renderDeviceWidget(mainAreaDevices[0])
+    h('div.main-area__widgets-inner-wrapper',
+      mainAreaDevices.map(renderDeviceWidget)
+    ),
+    renderScrollUpControl(),
+    renderScrollDownControl()
   );
+};
+
+const renderScrollUpControl = () => {
+  if (mainAreaDevices.length > NUMBER_OF_WIDGETS_THAT_FIT_VERTICALLY) {
+    return h('div.main-area__widgets-scroll-up.main-area__widgets-scroll-up_hidden',
+      { onclick: () => scrollWidgetsUp() }
+    );
+  }
+};
+
+const renderScrollDownControl = () => {
+  if (mainAreaDevices.length > NUMBER_OF_WIDGETS_THAT_FIT_VERTICALLY) {
+    return h('div.main-area__widgets-scroll-down',
+      { onclick: () => scrollWidgetsDown() }
+    );
+  }
+};
+
+const scrollWidgetsUp = () => {
+  const widgetsInnerWrapper = document.querySelector('.main-area__widgets-inner-wrapper');
+  const initialScrollY = widgetsInnerWrapper.scrollTop;
+  const scrollDistance = WIDGET_HEIGHT + WIDGET_MARGIN;
+  const targetScrollY = initialScrollY - scrollDistance;
+
+  const scroll = new Scroll(widgetsInnerWrapper);
+  scroll.to(0, targetScrollY).then(() => checkScrollControlsDisplay());
+};
+
+const scrollWidgetsDown = () => {
+  const widgetsInnerWrapper = document.querySelector('.main-area__widgets-inner-wrapper');
+  const initialScrollY = widgetsInnerWrapper.scrollTop;
+  const scrollDistance = WIDGET_HEIGHT + WIDGET_MARGIN;
+  const targetScrollY = initialScrollY + scrollDistance;
+
+  const scroll = new Scroll(widgetsInnerWrapper);
+  scroll.to(0, targetScrollY).then(() => checkScrollControlsDisplay());
+};
+
+const checkScrollControlsDisplay = () => {
+  const scrollUpControl = document.querySelector('.main-area__widgets-scroll-up');
+  const scrollDownControl = document.querySelector('.main-area__widgets-scroll-down');
+
+  if (shouldShowScrollUpControl()) {
+    scrollUpControl.classList.remove('main-area__widgets-scroll-up_hidden');
+  } else {
+    scrollUpControl.classList.add('main-area__widgets-scroll-up_hidden');
+  }
+
+  if (shouldShowScrollDownControl()) {
+    scrollDownControl.classList.remove('main-area__widgets-scroll-down_hidden');
+  } else {
+    scrollDownControl.classList.add('main-area__widgets-scroll-down_hidden');
+  }
+};
+
+const shouldShowScrollUpControl = () => {
+  const widgetsInnerWrapper = document.querySelector('.main-area__widgets-inner-wrapper');
+  return widgetsInnerWrapper.scrollTop > 0;
+};
+
+const shouldShowScrollDownControl = () => {
+  const widgetsInnerWrapper = document.querySelector('.main-area__widgets-inner-wrapper');
+  return widgetsInnerWrapper.scrollTop + widgetsInnerWrapper.offsetHeight < widgetsInnerWrapper.scrollHeight;
 };
 
 export default renderMainArea;

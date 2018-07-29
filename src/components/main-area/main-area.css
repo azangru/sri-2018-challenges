@@ -1,0 +1,67 @@
+.main-area {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 630px;
+  height: 331px;
+  background-image: url('../../assets/bg@1x.png');
+  background-size: contain;
+}
+
+.main-area__summary {
+  padding-left: 26px;
+}
+
+.main-area__widgets {
+  background: red;
+  padding-right: 20px;
+  height: 100%;
+}
+
+.main-area__salutation {
+  margin-top: 30px;
+  font-size: 27px;
+  color: var(--dark-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.main-area__status {
+  font-size: var(--font-size-small);
+  margin-top: 8px;
+}
+
+.main-area__climate-summary {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.main-area__indoors-climate {
+  margin-right: 20px;
+}
+
+.main-area__indoors-climate-label, .main-area__outdoors-climate-label {
+  color: var(--light-grey-color);
+  font-size: var(--font-size-x-small);
+}
+
+.main-area__indoors-climate-temperature, .main-area__outdoors-climate-temperature {
+  font-size: 36px;
+  color: var(--dark-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.main-area__outdoors-climate-data {
+  display: flex;
+  align-items: center;
+}
+
+.main-area__outdoors-climate-weather-icon {
+  margin-left: 8px;
+}
+
+/* Retina-specific */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .main-area {
+    background-image: url('../../assets/bg@2x.png');
+  }
+}

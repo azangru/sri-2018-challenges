@@ -33,7 +33,7 @@ const commonConfig = {
         loader: "style-loader!css-loader"
       },
       {
-        test: /\.(svg|png|otf)$/,
+        test: /\.(svg|png|woff2?)$/,
         loader: 'file-loader'
       }
     ]

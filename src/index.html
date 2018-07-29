@@ -6,10 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <%= require('html-loader!./partials/header.html') %>
+  <div class="layout-container">
+    <%= require('html-loader!./partials/header.html') %>
 
-  <main></main>
+    <main>
+      <div class="main-area-container"></div>
+      <div class="selected-scenarios-container"></div>
+      <div class="selected-devices-container"></div>
+    </main>
 
-  <%= require('html-loader!./partials/footer.html') %>
+    <%= require('html-loader!./partials/footer.html') %>
+  </div>
 </body>
 </html>

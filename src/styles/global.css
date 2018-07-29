@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-grey-color: #333333;
+  --light-grey-color: #858585;
+  --font-size-large: 18px;
+  --font-size-normal: 16px;
+  --font-size-small: 14px;
+  --font-size-x-small: 12px;
+  --font-arial: ArialMT, sans-serif;
+  --font-arial-bold: Arial-BoldMT, sans-serif
+}
+
+html, body {
+  margin: 0;
+}
+
+body {
+ font-family: var(--font-arial);
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+    font-family: ArialMT;
+    src: url('../assets/fonts/ArialMT.woff') format('woff');
+}
+
+@font-face {
+    font-family: Arial-BoldMT;
+    src: url('../assets/fonts/Arial-BoldMT.woff') format('woff');
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}

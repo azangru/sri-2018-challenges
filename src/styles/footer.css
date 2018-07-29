@@ -1,0 +1,27 @@
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 40px;
+  font-size: var(--font-size-x-small);
+  color: var(--light-grey-color);
+}
+
+.footer__menu-item {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.footer__menu-item:not(:last-of-type) {
+  margin-right: 17px;
+}
+
+.footer__menu-item a {
+  color: inherit;
+}
+
+.footer__menu-item a:hover {
+  color: var(--dark-grey-color);
+}

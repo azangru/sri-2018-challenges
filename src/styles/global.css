@@ -18,7 +18,8 @@ html, body {
 }
 
 body {
- font-family: var(--font-arial);
+  position: relative;
+  font-family: var(--font-arial);
 }
 
 a {

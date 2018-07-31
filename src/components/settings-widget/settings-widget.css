@@ -1,0 +1,11 @@
+.settings-widget__body {
+  background: white;
+  border-radius: 20px;
+  padding: 26px 25px;
+  width: 630px;
+}
+
+.settings-widget__title {
+  font-family: Arial-BoldMT;
+  font-size: 27px;
+}

@@ -7,3 +7,7 @@
     "main"
     "footer";
 }
+
+.layout-container_with-popup-open {
+  filter: blur(3px);
+}

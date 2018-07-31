@@ -1,0 +1,14 @@
+.knob__body {
+  position: relative;
+  background: #fefefe;
+  box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);;
+  border-radius: 50%;
+  width: 178px;
+  height: 178px;
+}
+
+.knob__arrowhead {
+  position: absolute;
+  left: calc(50% - 6px);
+  top: 10px;
+}

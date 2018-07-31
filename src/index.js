@@ -5,10 +5,15 @@ import 'styles/main.css';
 import 'styles/footer.css';
 
 import renderMainArea from 'components/main-area';
+import popupMethods from 'components/popup';
+import renderSettingsWidget from 'components/settings-widget';
+
+import { selectedDevices } from 'data/widgets';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupWidgets();
-})
+  initializePopup();
+});
 
 function setupWidgets() {
   const mainAreaContainer = document.querySelector('.main-area-container');
@@ -16,4 +21,10 @@ function setupWidgets() {
   const selectedDevicesContainer = document.querySelector('.selected-devices-container');
 
   mainAreaContainer.appendChild(renderMainArea());
+}
+
+function initializePopup() {
+  document.body.appendChild(popupMethods.renderPopup());
+  popupMethods;
+  popupMethods.showPopup(renderSettingsWidget(selectedDevices[2]));
 }

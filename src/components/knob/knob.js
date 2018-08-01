@@ -34,9 +34,28 @@ const rotateKnob = (event) => {
   const x = eventX - knobX;
   const y = eventY - knobY;
 
-  const angle = Math.atan2(-y, x) * radToDeg;
+  // y-axis on the screen is inverted compared to what we are used to on paper
+  let angle = Math.atan2(-y, x) * radToDeg;
 
+  // make sure the angle is positive
+  if (angle < 0) {
+    angle = 360 + angle;
+  }
+
+  let tmp;
+  let startAngle = 0;
+
+  tmp = Math.floor(angle - startAngle);
+
+  // Making sure the current rotation
+  // stays between 0 and 359
+  if (tmp < 0) {
+    tmp = 360 + tmp;
+  } else if (tmp > 359) {
+    tmp = tmp % 360;
+  }
   console.log('event', angle);
+  document.querySelector('.knob__body').style.transform = `rotate(${tmp}deg)`;
 };
 
 export default renderKnob;

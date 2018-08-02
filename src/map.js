@@ -25,6 +25,7 @@ export default function initMap(ymaps, containerId) {
 
   loadList().then(data => {
     objectManager.add(data);
+    showDefectiveStations(objectManager)
   });
 
   // details
@@ -51,5 +52,16 @@ export default function initMap(ymaps, containerId) {
     objectManager.setFilter(
       obj => filters[obj.isActive ? 'active' : 'defective']
     );
+  });
+}
+
+function showDefectiveStations(objectManager) {
+  objectManager.clusters.each(cluster => {
+    const clusteredObjects = cluster.properties.geoObjects;
+    if (clusteredObjects.some(object => !object.isActive)) {
+      objectManager.clusters.setClusterOptions(cluster.id, {
+        preset: 'islands#invertedRedClusterIcons'
+      })
+    }
   });
 }

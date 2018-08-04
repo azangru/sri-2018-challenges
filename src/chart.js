@@ -35,12 +35,12 @@ export function createChart(container, data, isActive) {
       ]
     },
     options: {
-        legend: { 
+        legend: {
             display: false
         },
         scales: {
             xAxes: [{ ticks: { display: false } }],
-            yAxes: [{ ticks: { beginAtZero: true, max: 0 } }]
+            yAxes: [{ ticks: { beginAtZero: true } }]
         }
     }
   });

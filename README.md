@@ -1,7 +1,7 @@
 # CHALLENGE
 
 ## Summary
-This is a Yandex-maps-based challenge for Yandex School of Interface Development 2018. The original description in Russian can be seen [here](docs/challenge-description.md). Briefly, the map should display clusters of objects representing active (green) and malfunctioning (red) drone stations. A click on a placemart should open a popup with details about the station.
+This is a Yandex-maps-based challenge for Yandex School of Interface Development 2018. The original description in Russian can be seen [here](docs/challenge-description.md). Briefly, the map should display clusters of objects representing active (green) and malfunctioning (red) drone stations. A cluster icon should show whether it contains malfunctioning stations. A click on a placemark should open a popup with certain details about the station and a chart reflecting its workload.
 
 ## Solution
 
@@ -34,3 +34,25 @@ So, the `getDetailsContentLayout` function needed fixing. It was apparent that s
 #### Drawing the chart in the balloon
 
 By now, the balloon was showing an empty grid, which suggested that it should contain the "station workload chart" as mentioned in the challenge. The text of the challenge does not give an example of what such a chart should look like, so the only suspicious thing that I noted when reading through the code was that in the options passed to the `Chart` constructor, the y axis was clamped at a maximum value of 0 (whereas the data values passed to the chart were all greater than 0). After removing this option, I could see a visible chart drawn in the balloon. It looks legit, so I believe this is the solution for this bit of the puzzle, but I have no way of ascertaining that this indeed is the case.
+
+### Update code style
+I tried to make the code consistent with regards to the following:
+- indentation (2 spaces); it was a bit hard to consistently indent the template literal, but while doing so, I noticed it was missing the closing `div`
+- position of braces in function definition (opening curly brace is on the same line as parenthesis):
+
+```
+function () {
+  // body
+}
+```
+instead of on the new line (as was in one function in api.js):
+```
+function ()
+{
+  // body
+}
+```
+- do not spam the console with debugging messages (that's why I removed `console.log`) from the `index.js` file
+
+### No unused code
+One of the instructions in the challenge was to remove unused code. It seems that the `popup.js` file is not used anywhere in this code and can be safely removed. I tried to imagine where its code might fit in the rest of the picture, but couldn't find a proper place for it. `popup.js` expects a data object to have an `operator` field on it, which it doesn't. Unless I am missing something, this code is superfluous and can be safely removed.

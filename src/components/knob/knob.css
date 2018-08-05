@@ -1,5 +1,29 @@
-.knob__body {
+.knob {
   position: relative;
+  display: inline-block;
+}
+
+.knob__dial-wrapper {
+  position: relative;
+}
+
+.knob__dial {
+  clip-path: polygon(0 0, 100% 1%, 100% 60%, 75% 56%, 38% 73%, 19% 100%, 0 100%);
+
+  /* clip-path: polygon(100% 0, 100% 60%, 80% 55%, 38% 60%, 0 86%, 1% 0); */
+}
+
+.knob__dial_grey {
+  position: absolute;
+  bottom: 0;
+  filter: grayscale(100%);
+  clip-path: polygon(83% 54%, 100% 62%, 100% 84%, 78% 99%, 66% 78%);
+}
+
+.knob__body {
+  top: 22px;
+  left: 22px;
+  position: absolute;
   background: #fefefe;
   box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);;
   border-radius: 50%;
@@ -11,4 +35,5 @@
   position: absolute;
   left: calc(50% - 6px);
   top: 10px;
+  pointer-events: none;
 }

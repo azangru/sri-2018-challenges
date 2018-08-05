@@ -86,8 +86,6 @@ const rotateKnob = (event) => {
   const x = eventX - knobX;
   const y = eventY - knobY;
 
-  console.log(findKnobCenter());
-
   // y-axis on the screen is inverted compared to what we are used to on paper
   let angle = Math.atan2(-y, x) * radToDeg;
 
@@ -110,7 +108,14 @@ const rotateKnob = (event) => {
   } else if (tmp > 359) {
     tmp = tmp % 360;
   }
-  state.temporaryRotation = state.currentKnobRotation -  tmp;
+
+  state.temporaryRotation = (state.currentKnobRotation -  tmp) % 360;
+
+  // console.log(state.currentKnobRotation, tmp, state.temporaryRotation, state.temporaryRotation % 360);
+  if (state.temporaryRotation < -150) return;
+  // if(Math.abs(tmp - state.currentKnobRotation) > 152){
+  //   return false;
+  // }
 
   document.querySelector('.knob__body').style.transform = `rotate(${state.temporaryRotation}deg)`;
 };

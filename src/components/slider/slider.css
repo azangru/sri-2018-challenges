@@ -1,0 +1,108 @@
+.slider {
+  position: relative;
+}
+
+.slider_brightness::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: calc(50% - 15px);
+  left: 15px;
+  background-image: url('./icons/sun-min.svg');
+  background-size: contain;
+}
+
+.slider_brightness::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: calc(50% - 15px);
+  right: 15px;
+  background-image: url('./icons/sun-max.svg');
+  background-size: contain;
+}
+
+.slider_temperature::before {
+  content: '–10';
+  position: absolute;
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  color: white;
+  top: calc(50% - 9px);
+  left: 15px;
+}
+
+.slider_temperature::after {
+  content: '+30';
+  position: absolute;
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  color: white;
+  top: calc(50% - 9px);
+  right: 15px;
+}
+
+/* REMOVE DEFAULT STYLES FROM INPUT ELEMENT */
+.slider input {
+  width: 100%;
+  height: 60px;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.slider input::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.slider input:focus {
+  outline: none;
+}
+
+/* INPUT TRACK */
+.slider input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  background: linear-gradient(to right, #3071a9, #FF9E00);
+  border-radius: 30px;
+}
+
+.slider input::-moz-range-track {
+
+}
+
+.slider input::-ms-track {
+
+}
+
+
+.slider_temperature input::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #068FFF, #FFD800 50%, #F76B1C);
+}
+
+.slider_brightness input::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #FFE682, #FF9E00);
+}
+
+/* INPUT THUMB */
+
+.slider input::-webkit-slider-thumb {
+  border: 4px solid #fff;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+}

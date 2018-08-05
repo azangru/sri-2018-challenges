@@ -22,7 +22,7 @@ const renderSettingsWidget = (widgetData) => {
     return renderTemperatureSliderWidget(widgetData);
   }
   // FIXME
-  return renderTemperatureSliderWidget(widgetData);
+  return renderTemperatureKnobWidget(widgetData);
   // return renderTemperatureKnobWidget(widgetData);
 };
 

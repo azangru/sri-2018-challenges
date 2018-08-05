@@ -8,6 +8,10 @@ import dialColoredPath from 'assets/icons/knob-dial.svg';
 
 import './knob.css';
 
+const MAX_COUNTERCLOCKWISE = 210;
+const MAX_CLOCKWISE = 150;
+const ROTATION_RANGE = 300;
+
 let initialState = {
   isKnobGrabbed: false,
   startRotation: null,
@@ -30,8 +34,9 @@ const renderKnob = (widgetData) => {
     },
       h('div.knob__arrowhead',
         h('img', { src: arrowheadPath })
-      )
-    )
+      ),
+    ),
+    h('div.knob__temperature', '+23')
   );
 };
 
@@ -99,7 +104,7 @@ const rotateKnob = (event) => {
     state.startRotation = angle;
   }
 
-  tmp = Math.floor(angle - state.startRotation);
+  tmp = Math.floor(state.currentKnobRotation - (angle - state.startRotation));
 
   // Making sure the current rotation
   // stays between 0 and 359
@@ -109,15 +114,34 @@ const rotateKnob = (event) => {
     tmp = tmp % 360;
   }
 
-  state.temporaryRotation = (state.currentKnobRotation -  tmp) % 360;
+  // A half-assed attempt to stop the knob from turning beyond a certain angle
+  if (tmp < MAX_COUNTERCLOCKWISE && tmp > MAX_CLOCKWISE) return;
 
-  // console.log(state.currentKnobRotation, tmp, state.temporaryRotation, state.temporaryRotation % 360);
-  if (state.temporaryRotation < -150) return;
-  // if(Math.abs(tmp - state.currentKnobRotation) > 152){
-  //   return false;
-  // }
+  state.temporaryRotation = tmp; //(state.currentKnobRotation -  tmp) % 360;
 
   document.querySelector('.knob__body').style.transform = `rotate(${state.temporaryRotation}deg)`;
+  updateTemperature(angleToTemperature(state.temporaryRotation));
 };
+
+function angleToTemperature(angle) {
+  // start counting from the MAX_COUNTERCLOCKWISE angle representing the minimum temperature
+  let adjustedAngle = angle - MAX_COUNTERCLOCKWISE;
+  if (adjustedAngle < 0) {
+    adjustedAngle = 360 + adjustedAngle;
+  }
+
+  const minTemperature = 10;
+  const maxTemperature = 30;
+  const temperatureRange = maxTemperature - minTemperature;
+
+  const angleToPercent = Math.floor(adjustedAngle / ROTATION_RANGE * 100);
+
+  return (Math.floor(angleToPercent * temperatureRange / 100)) + minTemperature;
+}
+
+function updateTemperature(temperature) {
+  const temperatureContainer = document.querySelector('.knob__temperature');
+  temperatureContainer.innerHTML = `+${temperature}`;
+}
 
 export default renderKnob;

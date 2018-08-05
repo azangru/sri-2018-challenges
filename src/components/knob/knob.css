@@ -38,3 +38,12 @@
   top: 10px;
   pointer-events: none;
 }
+
+.knob__temperature {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-arial-bold);
+  font-size: 66px;
+}

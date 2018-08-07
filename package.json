@@ -1,0 +1,16 @@
+{
+  "name": "algo-exercise",
+  "version": "1.0.0",
+  "scripts": {
+    "tdd": "jest --watchAll",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "eslint": "5.3.0",
+    "eslint-plugin-jest": "21.18.0",
+    "jest": "23.4.2"
+  },
+  "dependencies": {
+    "ramda": "0.25.0"
+  }
+}

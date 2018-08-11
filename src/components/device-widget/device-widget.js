@@ -1,11 +1,16 @@
 import h from 'hyperscript';
 
+import popupMethods from 'components/popup';
+
 import './device-widget.css';
 
 const renderDeviceWidget = (params) => {
   const { name, message, icon, isOn } = params;
 
   return h('div.device-widget',
+    {
+      onclick: (event) => onWidgetClick(event, params)
+    },
     renderIcon(icon, isOn),
     renderContent(name, message)
   );
@@ -25,5 +30,11 @@ const renderContent = (name, message) => {
   );
 };
 
+
+const onWidgetClick = (event, params) => {
+  const widgetElement = event.currentTarget;
+  console.log('widgetElement', widgetElement);
+  popupMethods.showPopup(widgetElement, params);
+};
 
 export default renderDeviceWidget;

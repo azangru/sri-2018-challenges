@@ -3,19 +3,22 @@ export const mainAreaDevices = [
     name: 'Philips Cooler',
     message: 'Начнет охлаждать в 16:30',
     icon: 'thermometer',
-    isOn: false
+    isOn: false,
+    widgetType: 'temparature-knob'
   },
   {
     name: 'Xiaomi Yeelight LED Smart Bulb',
     message: 'Включится в 17:00',
     icon: 'sun',
-    isOn: false
+    isOn: false,
+    widgetType: 'light-slider'
   },
   {
     name: 'Elgato Eve Degree Connected',
     message: 'Выключено до 17:00',
     icon: 'thermometer',
-    isOn: false
+    isOn: false,
+    widgetType: 'temperature-slider'
   },
 ];
 

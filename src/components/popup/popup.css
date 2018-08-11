@@ -6,11 +6,19 @@
   height: 100vh;
 }
 
+.popup_hidden {
+  display: none;
+}
+
 .popup__background {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(51,51,51,0.5);
+}
+
+.popup__body {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -1,3 +1,5 @@
+import 'web-animations-js'; // polyfill for Web Animation API
+
 import 'styles/global.css';
 import 'styles/layout.css';
 import 'styles/header.css';
@@ -6,7 +8,6 @@ import 'styles/footer.css';
 
 import renderMainArea from 'components/main-area';
 import popupMethods from 'components/popup';
-import renderSettingsWidget from 'components/settings-widget';
 
 import { selectedDevices } from 'data/widgets';
 
@@ -25,6 +26,4 @@ function setupWidgets() {
 
 function initializePopup() {
   document.body.appendChild(popupMethods.renderPopup());
-  popupMethods;
-  popupMethods.showPopup(renderSettingsWidget(selectedDevices[2]));
 }

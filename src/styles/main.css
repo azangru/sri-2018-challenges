@@ -3,6 +3,7 @@ main {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
+  grid-row-gap: 30px;
   grid-template-areas:
     "main-area selected-scenarios"
     "selected-devices selected-devices";

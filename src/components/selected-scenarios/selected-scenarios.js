@@ -23,7 +23,18 @@ const renderHeader = () => {
 };
 
 const renderPager = () => {
+  const arrowPath = require('assets/icons/arrow-pager.svg');
 
+  return h('.selected-scenarios__pager',
+    h('img', {
+      className: 'selected-scenarios__pager-arrow-left',
+      src: arrowPath
+    }),
+    h('img', {
+      className: 'selected-scenarios__pager-arrow-right',
+      src: arrowPath
+    })
+  );
 };
 
 const renderWidgets = (scenarios) => {

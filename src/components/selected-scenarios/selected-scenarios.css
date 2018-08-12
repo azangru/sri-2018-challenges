@@ -1,16 +1,30 @@
-.selected-scenarios__widgets {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
-}
-
 .selected-scenarios__header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
+  padding-right: 45px;
 }
 
 .selected-scenarios__title {
   font-size: var(--font-size-large);
   font-family: var(--font-arial-bold);
   color: var(--dark-grey-color);
+}
+
+.selected-scenarios__pager {
+  display: flex;
+  width: 40px;
+  justify-content: space-between;
+}
+
+.selected-scenarios__pager-arrow-right {
+  transform: rotate(180deg)
+}
+
+
+.selected-scenarios__widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
 }

@@ -48,7 +48,8 @@ const renderSelectedDevices = () => {
 const renderHeader = () => {
   return h('.selected-devices__header',
     renderTitle(),
-    renderFilters()
+    renderFilters(),
+    renderPager()
   );
 };
 
@@ -75,7 +76,18 @@ const renderSelector = () => {
 };
 
 const renderPager = () => {
+  const arrowPath = require('assets/icons/arrow-pager.svg');
 
+  return h('.selected-devices__pager',
+    h('img', {
+      className: 'selected-devices__pager-arrow-left',
+      src: arrowPath
+    }),
+    h('img', {
+      className: 'selected-devices__pager-arrow-right',
+      src: arrowPath
+    })
+  );
 };
 
 const renderWidgets = (devices) => {

@@ -1,4 +1,16 @@
 .main-area {
+  width: 630px;
+  margin-left: 40px;
+}
+
+.main-area__header {
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  color: var(--dark-grey-color);
+  margin-bottom: 20px;
+}
+
+.main-area__body {
   display: grid;
   grid-template-columns: 1fr auto;
   width: 630px;

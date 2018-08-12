@@ -16,7 +16,20 @@ const WIDGET_HEIGHT = 120;
 const WIDGET_MARGIN = 15;
 
 const renderMainArea = () => {
-  return h('div.main-area',
+  return h('.main-area',
+    renderHeader(),
+    renderBody()
+  );
+};
+
+const renderHeader = () => {
+  return h('.main-area__header',
+    'Главное'
+  );
+};
+
+const renderBody = () => {
+  return h('.main-area__body',
     renderSummary(),
     renderWidgets()
   );

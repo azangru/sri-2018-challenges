@@ -1,3 +1,19 @@
 main {
   grid-area: main;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "main-area selected-scenarios"
+    "selected-devices selected-devices";
+  margin-top: 30px;
+}
+
+.selected-scenarios-container {
+  margin-left: 26px;
+  grid-area: selected-scenarios
+}
+
+.selected-devices-container {
+  grid-area: selected-devices;
 }

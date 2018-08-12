@@ -1,0 +1,16 @@
+.selected-scenarios__widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.selected-scenarios__header {
+  margin-bottom: 20px;
+}
+
+.selected-scenarios__title {
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  color: var(--dark-grey-color);
+}

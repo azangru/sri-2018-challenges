@@ -1,6 +1,7 @@
 .selected-devices__header {
   display: flex;
   align-items: center;
+  margin-left: 40px;
 }
 
 .selected-devices__filters {
@@ -14,4 +15,12 @@
 
 .selected-devices__widgets {
   display: flex;
+}
+
+.selected-devices__widgets .device-widget:first-child {
+  margin-left: 40px;
+}
+
+.selected-devices__widgets .device-widget:not(:last-child) {
+  margin-right: 15px;
 }

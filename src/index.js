@@ -8,6 +8,7 @@ import 'styles/footer.css';
 
 import renderMainArea from 'components/main-area';
 import renderSelectedDevices from 'components/selected-devices';
+import renderSelectedScenarios from 'components/selected-scenarios';
 import popupMethods from 'components/popup';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +22,7 @@ function setupWidgets() {
   const selectedDevicesContainer = document.querySelector('.selected-devices-container');
 
   mainAreaContainer.appendChild(renderMainArea());
+  selectedScenariosContainer.appendChild(renderSelectedScenarios());
   selectedDevicesContainer.appendChild(renderSelectedDevices());
 }
 

@@ -4,6 +4,11 @@
   border-radius: 20px;
   font-size: 13px;
   font-family: var(--font-arial-bold);
+  cursor: pointer;
+}
+
+.pill:not(:last-child) {
+  margin-right: 10px;
 }
 
 .pill_active {

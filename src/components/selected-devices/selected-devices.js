@@ -59,15 +59,15 @@ const renderTitle = () => {
 };
 
 const renderFilters = () => {
-  return filters.map(filter => {
-    return renderPill({
-      content: filter.name,
-      isActive: filter.isActive,
-      onClick: () => setActiveFilter(filter)
-    });
-  });
-
-  // renderPill
+  return h('.selected-devices__filters',
+    filters.map(filter => {
+      return renderPill({
+        content: filter.name,
+        isActive: filter.isActive,
+        onClick: () => setActiveFilter(filter)
+      });
+    })
+  );
 };
 
 const renderSelector = () => {
@@ -90,7 +90,16 @@ const setActiveFilter = activeFilter => {
     filter,
     { isActive: filter.name === activeFilter.name })
   );
+  updateFilters();
   updateWidgets(activeFilter);
+};
+
+const updateFilters = () => {
+  const selectedDevicesHeader = document.querySelector('.selected-devices__header');
+  const oldFiltersContainer = document.querySelector('.selected-devices__filters');
+  const updatedFiltersContainer = renderFilters();
+
+  selectedDevicesHeader.replaceChild(updatedFiltersContainer, oldFiltersContainer);
 };
 
 const updateWidgets = ({ filter, filterField }) => {

@@ -7,9 +7,8 @@ import 'styles/main.css';
 import 'styles/footer.css';
 
 import renderMainArea from 'components/main-area';
+import renderSelectedDevices from 'components/selected-devices';
 import popupMethods from 'components/popup';
-
-import { selectedDevices } from 'data/widgets';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupWidgets();
@@ -22,6 +21,7 @@ function setupWidgets() {
   const selectedDevicesContainer = document.querySelector('.selected-devices-container');
 
   mainAreaContainer.appendChild(renderMainArea());
+  selectedDevicesContainer.appendChild(renderSelectedDevices());
 }
 
 function initializePopup() {

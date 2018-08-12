@@ -1,0 +1,13 @@
+.selected-devices__header {
+  display: flex;
+  align-items: center;
+}
+
+.selected-devices__title {
+  font-family: var(--font-arial-bold);
+  font-size: var(--font-size-large);
+}
+
+.selected-devices__widgets {
+  display: flex;
+}

@@ -38,4 +38,8 @@ main {
     width: 100%;
   }
 
+  .selected-scenarios-container {
+    margin-left: 0;
+  }
+
 }

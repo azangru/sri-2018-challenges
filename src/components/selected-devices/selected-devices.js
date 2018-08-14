@@ -41,7 +41,9 @@ let filters = [
 const renderSelectedDevices = () => {
   return h('.selected-devices',
     renderHeader(),
-    renderWidgets(selectedDevices)
+    h('.selected-devices__widgets-wrapper',
+      renderWidgets(selectedDevices)
+    )
   );
 };
 
@@ -120,7 +122,7 @@ const updateWidgets = ({ filter, filterField }) => {
     devices = devices.filter(device => device[filterField] === filter);
   }
 
-  const selectedDevicesContainer = document.querySelector('.selected-devices');
+  const selectedDevicesContainer = document.querySelector('.selected-devices__widgets-wrapper');
   const oldWidgetsContainer = document.querySelector('.selected-devices__widgets');
   const updatedWidgetsContainer = renderWidgets(devices);
 

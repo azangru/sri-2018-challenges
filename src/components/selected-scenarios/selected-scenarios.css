@@ -33,7 +33,35 @@
 
   .selected-scenarios {
     width: 100%;
+  }
+
+  .selected-scenarios__header {
+    margin-left: 20px;
+  }
+
+  .selected-scenarios__pager {
+    display: none;
+  }
+
+  .selected-scenarios__widgets-wrapper {
+    width: 100%;
     overflow: auto;
+  }
+
+  .selected-scenarios__widgets {
+    display: inline-flex;
+  }
+
+  .selected-scenarios__widgets .scenario-widget:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .selected-scenarios__widgets .scenario-widget:first-child {
+    margin-left: 20px;
+  }
+
+  .selected-scenarios__widgets .scenario-widget:last-child {
+    margin-right: 20px;
   }
 
 }

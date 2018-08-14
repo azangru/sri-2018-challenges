@@ -9,7 +9,9 @@ import './selected-scenarios.css';
 const renderSelectedScenarios = () => {
   return h('.selected-scenarios',
     renderHeader(),
-    renderWidgets(selectedScenarios)
+    h('.selected-scenarios__widgets-wrapper',
+      renderWidgets(selectedScenarios)
+    )
   );
 };
 

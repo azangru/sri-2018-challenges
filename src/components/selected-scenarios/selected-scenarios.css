@@ -28,3 +28,12 @@
   grid-column-gap: 15px;
   grid-row-gap: 15px;
 }
+
+@media (max-width: 600px) {
+
+  .selected-scenarios {
+    width: 100%;
+    overflow: auto;
+  }
+
+}

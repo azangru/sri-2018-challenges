@@ -38,3 +38,13 @@
 .selected-devices__widgets .device-widget:not(:last-child) {
   margin-right: 15px;
 }
+
+
+@media (max-width: 600px) {
+
+  .selected-devices {
+    width: 100%;
+    overflow: auto;
+  }
+
+}

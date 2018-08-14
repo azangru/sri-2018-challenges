@@ -17,6 +17,7 @@
   height: 331px;
   background-image: url('../../assets/bg@1x.png');
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .main-area__summary {
@@ -142,4 +143,72 @@
   .main-area {
     background-image: url('../../assets/bg@2x.png');
   }
+}
+
+
+@media (max-width: 600px) {
+
+  .main-area {
+    width: calc(100% - 2 * 20px);
+    margin: 0 20px;
+  }
+
+  .main-area__body {
+    display: block;
+    /* display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto; */
+    width: 100%;
+    height: auto;
+    background-image: url('../../assets/bg@1x.png');
+    background-size: contain;
+    background-position: bottom;
+    padding-bottom: 20px;
+  }
+
+  .main-area__salutation {
+    margin-top: 20px;
+    font-size: var(--font-size-large);
+    color: var(--dark-grey-color);
+    font-family: var(--font-arial-bold);
+  }
+
+  .main-area__indoors-climate-temperature, .main-area__outdoors-climate-temperature {
+    font-size: 24px;
+  }
+
+  .main-area__outdoors-climate-weather-icon img {
+    height: 20px;
+  }
+
+  .main-area__widgets {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    --webkit-overflow-scrolling: touch;
+  }
+
+  .main-area__widgets-inner-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: auto;
+    padding-right: 0;
+  }
+
+  .main-area__widgets-inner-wrapper .device-widget.device-widget { /* a hack to increase specificity :-( */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .main-area__widgets-inner-wrapper .device-widget:first-child {
+    margin-left: 20px;
+  }
+
+  .main-area__widgets-scroll-up, .main-area__widgets-scroll-down {
+    display: none;
+  }
+
 }

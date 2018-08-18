@@ -94,7 +94,7 @@ const renderTemperatureKnobWidget = (widgetData) => {
 
 const renderLightSliderWidget = (widgetData) => {
   const pathToIcon = require(`assets/icons/sun-${widgetData.isOn ? 'on' : 'off'}.svg`);
-
+  const clonedWidgetData = Object.assign({}, widgetData);
 
   return h('.settings-widget',
     h('.settings-widget__body',
@@ -107,12 +107,14 @@ const renderLightSliderWidget = (widgetData) => {
       ),
       renderLightWidgetPresets(),
       h('.settings-widget__slider', slider.renderBrightnessSlider(widgetData))
-    )
+    ),
+    renderWidgetControls(clonedWidgetData, widgetData)
   );
 };
 
 const renderTemperatureSliderWidget = (widgetData) => {
   const pathToIcon = require(`assets/icons/thermometer-${widgetData.isOn ? 'on' : 'off'}.svg`);
+  const clonedWidgetData = Object.assign({}, widgetData);
 
   return h('.settings-widget',
     h('.settings-widget__body',
@@ -125,7 +127,8 @@ const renderTemperatureSliderWidget = (widgetData) => {
       ),
       renderTemperatureWidgetPresets(),
       h('.settings-widget__slider', slider.renderTemperatureSlider(widgetData))
-    )
+    ),
+    renderWidgetControls(clonedWidgetData, widgetData)
   );
 };
 

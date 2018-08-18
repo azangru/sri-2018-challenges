@@ -26,6 +26,7 @@ const renderKnob = (widgetData) => {
     renderKnobDial(),
     h('div.knob__body', {
       onmousedown: grabKnob,
+      ontouchstart: grabKnob,
       onmousemove: rotateKnob,
       ontouchmove: rotateKnob,
       style: {
@@ -84,7 +85,7 @@ const findKnobCenter = () => {
 const rotateKnob = (event) => {
   if (!state.isKnobGrabbed) return;
 
-  const { pageX: eventX, pageY: eventY } = event;
+  const { eventX, eventY } = getEventCoordinates(event);
   const { x: knobX, y: knobY } = findKnobCenter();
   const radToDeg = 180/Math.PI;
 
@@ -122,6 +123,20 @@ const rotateKnob = (event) => {
   document.querySelector('.knob__body').style.transform = `rotate(${state.temporaryRotation}deg)`;
   updateTemperature(angleToTemperature(state.temporaryRotation));
 };
+
+function getEventCoordinates(event) {
+  if (event.type === 'touchmove') {
+    return {
+      eventX: event.touches[0].pageX,
+      eventY: event.touches[0].pageY,
+    };
+  } else {
+    return {
+      eventX: event.pageX,
+      eventY: event.pageY
+    };
+  }
+}
 
 function angleToTemperature(angle) {
   // start counting from the MAX_COUNTERCLOCKWISE angle representing the minimum temperature

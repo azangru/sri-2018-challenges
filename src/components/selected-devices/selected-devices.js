@@ -4,6 +4,7 @@ import { selectedDevices } from 'data/widgets';
 
 import renderDeviceWidget from 'components/device-widget';
 import renderPill from 'components/pill';
+import renderSelect from 'components/select';
 
 import './selected-devices.css';
 
@@ -50,6 +51,7 @@ const renderSelectedDevices = () => {
 const renderHeader = () => {
   return h('.selected-devices__header',
     renderTitle(),
+    renderSelector(),
     renderFilters(),
     renderPager()
   );
@@ -74,7 +76,18 @@ const renderFilters = () => {
 };
 
 const renderSelector = () => {
-
+  const options = filters
+    .map(filter => {
+      return Object.assign(
+        {},
+        filter,
+        {
+          value: filter.name,
+          onClick: () => setActiveFilter(filter)
+        }
+      );
+    });
+  return renderSelect(options);
 };
 
 const renderPager = () => {

@@ -9,3 +9,49 @@
   font-family: Arial-BoldMT;
   font-size: 27px;
 }
+
+.settings-widget__presets-wrapper {
+  overflow-x: auto;
+  margin-bottom: 25px;
+}
+
+.settings-widget__presets {
+  display: inline-flex;
+}
+
+.settings-widget__slider_hidden {
+  display: none;
+}
+
+.settings-widget__controls {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-widget__apply-button, .settings-widget__cancel-button {
+  width: 48%;
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.settings-widget__apply-button {
+  background: #FFD93E;
+}
+
+.settings-widget__cancel-button {
+  background: white;
+}
+
+/* @media (max-width: 600px) {
+
+  .settings-widget__body {
+
+    width: 630px;
+  }
+
+} */

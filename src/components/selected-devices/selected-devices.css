@@ -48,6 +48,7 @@
 
   .selected-devices__header {
     margin-left: 20px;
+    padding-right: 20px;
   }
 
   .selected-devices__widgets-wrapper {

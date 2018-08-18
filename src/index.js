@@ -9,7 +9,7 @@ import 'styles/footer.css';
 import renderMainArea from 'components/main-area';
 import renderSelectedDevices from 'components/selected-devices';
 import renderSelectedScenarios from 'components/selected-scenarios';
-import popupMethods from 'components/popup';
+import renderPopup from 'components/popup';
 
 document.addEventListener('DOMContentLoaded', () => {
   setupWidgets();
@@ -27,5 +27,5 @@ function setupWidgets() {
 }
 
 function initializePopup() {
-  document.body.appendChild(popupMethods.renderPopup());
+  document.body.appendChild(renderPopup());
 }

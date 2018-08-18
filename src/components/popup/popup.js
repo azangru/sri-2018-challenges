@@ -8,7 +8,11 @@ const renderPopup = () => {
   return h('div.popup.popup_hidden',
     h('div.popup__background',
       {
-        onclick: hidePopup
+        onclick: (event) => {
+          if (event.target.classList.contains('popup__background')) {
+            hidePopup();
+          }
+        }
       },
       renderPopupBody()
     )
@@ -67,8 +71,5 @@ const animateEnter = (source, target, popupBody) => {
 };
 
 
-export default {
-  renderPopup,
-  showPopup,
-  hidePopup
-};
+export default renderPopup;
+export { showPopup, hidePopup };

@@ -11,7 +11,8 @@ const sampleOutput = require('./fixtures/output');
 describe('deviceScheduler', () => {
 
   test('it works', () => {
-    // console.log(generateSchedule(sampleInput));
+    generateSchedule(sampleInput)
+    console.log(generateSchedule(sampleInput));
     // expect(deviceScheduler()).toEqual(true);
   });
 
@@ -21,8 +22,7 @@ describe('generateRateByHourMap', () => {
 
   test('generates an object mapping hours to the respective hourly rate', () => {
     const hourlyRateMap = generateRateByHourMap(sampleInput.rates);
-    console.log('hourlyRateMap', hourlyRateMap);
-    expect(Object.keys(hourlyRateMap).length).toEqual(24);
+    expect([...hourlyRateMap.keys()].length).toEqual(24);
   });
 
   test('throws if the same hour has different rates', () => {

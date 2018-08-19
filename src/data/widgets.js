@@ -4,7 +4,8 @@ export const mainAreaDevices = [
     message: 'Начнет охлаждать в 16:30',
     icon: 'thermometer',
     isOn: false,
-    widgetType: 'temparature-knob'
+    widgetType: 'temparature-knob',
+    value: '+23'
   },
   {
     name: 'Xiaomi Yeelight LED Smart Bulb',

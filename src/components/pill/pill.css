@@ -5,6 +5,7 @@
   font-size: 13px;
   font-family: var(--font-arial-bold);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .pill:not(:last-child) {

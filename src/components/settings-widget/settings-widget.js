@@ -79,12 +79,16 @@ const renderTemperatureKnobWidget = (widgetData) => {
   return h('.settings-widget',
     h('.settings-widget__body',
       h('.settings-widget__header',
-        h('.settings-widget__title', widgetData.name),
-        h('.settings-widget__message', widgetData.message),
-        h('.settings-widget__value', widgetData.value),
-        h('.settings-widget__icon',
-          h('img', { src: pathToIcon })
+        h('.settings-widget__header-text',
+          h('.settings-widget__title', widgetData.name),
+          h('.settings-widget__message', widgetData.message),
         ),
+        h('.settings-widget__info-corner',
+          h('.settings-widget__info-corner-data', widgetData.value),
+          h('.settings-widget__icon',
+            h('img', { src: pathToIcon })
+          )
+        )
       ),
       h('.settings-widget__knob', renderKnob(clonedWidgetData))
     ),
@@ -99,11 +103,15 @@ const renderLightSliderWidget = (widgetData) => {
   return h('.settings-widget',
     h('.settings-widget__body',
       h('.settings-widget__header',
-        h('.settings-widget__title', widgetData.name),
-        h('.settings-widget__message', widgetData.message),
-        h('.settings-widget__icon',
-          h('img', { src: pathToIcon })
+        h('.settings-widget__header-text',
+          h('.settings-widget__title', widgetData.name),
+          h('.settings-widget__message', widgetData.message),
         ),
+        h('.settings-widget__info-corner',
+          h('.settings-widget__icon',
+            h('img', { src: pathToIcon })
+          )
+        )
       ),
       renderLightWidgetPresets(),
       h('.settings-widget__slider', slider.renderBrightnessSlider(widgetData))
@@ -119,11 +127,15 @@ const renderTemperatureSliderWidget = (widgetData) => {
   return h('.settings-widget',
     h('.settings-widget__body',
       h('.settings-widget__header',
-        h('.settings-widget__title', widgetData.name),
-        h('.settings-widget__message', widgetData.message),
-        h('.settings-widget__icon',
-          h('img', { src: pathToIcon })
+        h('.settings-widget__header-text',
+          h('.settings-widget__title', widgetData.name),
+          h('.settings-widget__message', widgetData.message),
         ),
+        h('.settings-widget__info-corner',
+          h('.settings-widget__icon',
+            h('img', { src: pathToIcon })
+          )
+        )
       ),
       renderTemperatureWidgetPresets(),
       h('.settings-widget__slider', slider.renderTemperatureSlider(widgetData))

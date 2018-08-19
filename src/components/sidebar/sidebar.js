@@ -1,5 +1,3 @@
-import h from 'hyperscript';
-
 export function openSidebar () {
   const layoutContainer = document.querySelector('.layout-container');
   const headerMenuButton = document.querySelector('.header__mobile-menu-button');

@@ -129,6 +129,10 @@
     flex: 1;
   }
 
+  .settings-widget__slider_hidden {
+    display: none;
+  }
+
   .settings-widget__slider .slider {
     transform: rotate(-90deg);
     width: calc((100vh - 2*60px - 2*20px - 2*15px) * 0.7);

@@ -6,8 +6,15 @@
     "header"
     "main"
     "footer";
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
 }
 
 .layout-container_with-popup-open {
   filter: blur(3px);
+}
+
+.layout-container_with-sidebar-open {
+  transform: translateX(-70%);
+  pointer-events: none;
 }

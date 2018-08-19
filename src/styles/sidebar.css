@@ -1,0 +1,47 @@
+.sidebar {
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  width: 70%;
+  background: white;
+  z-index: 1;
+  transform: translateX(100%);
+}
+
+.sidebar__menu {
+  margin-top: 30px;
+  line-height: 2;
+}
+
+.sidebar__menu-item {
+  list-style-type: none;
+}
+
+.sidebar__menu-item a {
+  color: var(--light-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.sidebar__menu-item.sidebar__menu-item_active a {
+  color: var(--dark-grey-color);
+}
+
+/* borrowed the styles for this element from Yandex Market site */
+.sidebar__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTEyIDEwLjU4TDUuNTk0IDQuMTc2IDQuMTggNS41OWw2LjQwNiA2LjQwNkw0LjE4IDE4LjRsMS40MTQgMS40MTRMMTIgMTMuNDFsNi40MDYgNi40MDVMMTkuODIgMTguNGwtNi40MDYtNi40MDVMMTkuODIgNS41OWwtMS40MTQtMS40MTV6Ii8+PC9nPjwvc3ZnPg==')
+}
+
+.sidebar_open {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.sidebar_closed {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}

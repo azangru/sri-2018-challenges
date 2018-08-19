@@ -54,10 +54,11 @@ header {
 
   .header__mobile-menu-button {
     margin-left: auto;
+    display: block;
   }
 
-  .header__mobile-menu-button {
-    display: block;
+  .header__mobile-menu-button_with-sidebar-open {
+    display: none;
   }
 
 }

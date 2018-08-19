@@ -25,6 +25,7 @@ const renderPopupBody = () => {
 
 const showPopup = (element, widgetData) => {
   blurBackground();
+  disableBodyScroll();
 
   const popup = document.querySelector('.popup');
   const popupBody = document.querySelector('.popup__body');
@@ -37,12 +38,21 @@ const showPopup = (element, widgetData) => {
 
 const hidePopup = () => {
   unblurBackground();
+  enableBodyScroll();
 
   const popup = document.querySelector('.popup');
   const popupBody = document.querySelector('.popup__body');
 
   popup.classList.add('popup_hidden');
   popupBody.removeChild(popupBody.firstChild);
+};
+
+const disableBodyScroll = () => {
+  document.body.classList.add('noscroll');
+};
+
+const enableBodyScroll = () => {
+  document.body.classList.remove('noscroll');
 };
 
 const blurBackground = () => {

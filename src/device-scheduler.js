@@ -93,10 +93,7 @@ function fillScheduleWithDaytimeDevices(input, hourlyRates, output) {
   if (!daytimeDevices.length) return output; // nothing to do
 
   const daytimeRates = [...hourlyRates].filter(([hour]) => hour >= DAYTIME_START && hour < DAYTIME_END);
-  const sortedDaytimeRates = R.sortWith([
-    R.ascend(R.prop(1)), // rate
-    R.ascend(R.prop(0)) // time
-  ])(daytimeRates);
+  const sortedDaytimeRates = sortRates(daytimeRates);
 
   return fitDevicesInSchedule(daytimeDevices, sortedDaytimeRates, hourlyRates, output);
 }
@@ -109,10 +106,7 @@ function fillScheduleWithNighttimeDevices(input, hourlyRates, output) {
   const nighttimeRates = [...hourlyRates].filter(([hour]) =>
     (hour >= NIGHTTIME_START && hour < MIDNIGHT) || (hour >= 0 && hour < NIGHTTIME_END)
   );
-  const sortedNighttimeRates = R.sortWith([
-    R.ascend(R.prop(1)), // rate
-    R.ascend(R.prop(0)) // time
-  ])(nighttimeRates);
+  const sortedNighttimeRates = sortRates(nighttimeRates);
 
   return fitDevicesInSchedule(nighttimeDevices, sortedNighttimeRates, hourlyRates, output);
 }
@@ -122,10 +116,8 @@ function fillScheduleWithRemainingDevices(input, hourlyRates, output) {
   const anyTimeDevices = R.filter(isAnyTimeDevice)(input.devices);
   if (!anyTimeDevices.length) return output; // nothing to do
 
-  const sortedRates =  R.sortWith([
-    R.ascend(R.prop(1)), // rate
-    R.ascend(R.prop(0)) // time
-  ])([...hourlyRates]);
+  const sortedRates = sortRates([...hourlyRates]);
+  console.log('sortedRates', sortedRates);
 
   return fitDevicesInSchedule(anyTimeDevices, sortedRates, hourlyRates, output);
 }
@@ -169,6 +161,35 @@ function fitDevicesInSchedule(devices, sortedRates, ratesMap, output) {
   return output;
 }
 
+function sortRates(rates) {
+  const sortedRates = R.sortWith([
+    R.ascend(R.prop(1)), // rate
+    R.ascend(R.prop(0)) // time
+  ])([...rates]);
+
+  const withZeroIndex = R.findIndex(rates => rates[0] === 0)(sortedRates);
+  if (withZeroIndex === -1) return sortedRates; // the clock has not passed the 0 hour; no need for adjustments
+
+  const zeroHourRate = sortedRates[withZeroIndex][1];
+
+  let keepGoing = true;
+  let findHour = 23;
+
+  while (keepGoing) {
+    const rateIndex = R.findIndex(([hour]) => hour === findHour)(sortedRates);
+    const rate = sortedRates[rateIndex];
+    if (rate && rate[1] === zeroHourRate) {
+      sortedRates.splice(rateIndex, 1);
+      sortedRates.splice(withZeroIndex, 0, rate);
+      findHour -= 1;
+    } else {
+      keepGoing = false;
+    }
+  }
+
+  return sortedRates;
+}
+
 function isEnoughPowerForDevice(device, startTime, remainingEnergy) {
   const hours = R.range(startTime, startTime + device.duration);
   return hours.every(hour => remainingEnergy[hour] >= device.power);
@@ -190,5 +211,6 @@ function addDeviceToSchedule(device, startTime, totalValue, output) {
 
 module.exports = {
   generateSchedule,
-  generateRateByHourMap
+  generateRateByHourMap,
+  sortRates
 };

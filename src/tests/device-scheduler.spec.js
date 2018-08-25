@@ -11,10 +11,10 @@ const sampleOutput = require('./fixtures/output');
 
 describe('deviceScheduler', () => {
 
-  test('it works', () => {
-    generateSchedule(sampleInput)
-    console.log(generateSchedule(sampleInput));
-    // expect(deviceScheduler()).toEqual(true);
+  // an overall test that produces an expected output for the given input
+  test('builds a device usage schedule to match the sample output', () => {
+    const schedule = generateSchedule(sampleInput);
+    expect(schedule).toEqual(sampleOutput);
   });
 
 });

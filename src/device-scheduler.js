@@ -15,7 +15,7 @@ function generateSchedule(input) {
   const withNighttimeDevices = fillScheduleWithNighttimeDevices(input, hourlyRates, withDaytimeDevices);
   const withAnyTimeDevices = fillScheduleWithRemainingDevices(input, hourlyRates, withNighttimeDevices);
 
-  return withAnyTimeDevices;
+  return formatOutput(withAnyTimeDevices);
 }
 
 function generateOutputTemplate(input) {
@@ -77,10 +77,12 @@ function fillScheduleWithAllDayDevices(input, hourlyRates, output) {
 
     output.schedule[hour] = R.pluck('id', allDayDevices);
     output.remainingEnergy[hour] = input.maxPower - consumedEnergy;
-    output.consumedEnergy.value += hourlyRates.get(parseInt(hour)) * consumedEnergy;
+    const hourlyCost = calculateHourlyCost(consumedEnergy, hourlyRates.get(parseInt(hour)));
+
+    output.consumedEnergy.value += hourlyCost;
 
     allDayDevices.forEach(device => {
-      output.consumedEnergy.devices[device.id] += device.power * hourlyRates.get(parseInt(hour));
+      output.consumedEnergy.devices[device.id] += calculateHourlyCost(device.power,  hourlyRates.get(parseInt(hour)));
     });
   })(output.schedule);
 
@@ -117,7 +119,6 @@ function fillScheduleWithRemainingDevices(input, hourlyRates, output) {
   if (!anyTimeDevices.length) return output; // nothing to do
 
   const sortedRates = sortRates([...hourlyRates]);
-  console.log('sortedRates', sortedRates);
 
   return fitDevicesInSchedule(anyTimeDevices, sortedRates, hourlyRates, output);
 }
@@ -142,9 +143,8 @@ function fitDevicesInSchedule(devices, sortedRates, ratesMap, output) {
       }
 
       currentTotalValue = R.range(startTime, startTime + device.duration).reduce((acc, time) => {
-        return acc + ratesMap.get(time);
+        return acc + calculateHourlyCost(device.power, ratesMap.get(time));
       }, 0);
-      // console.log('currentTotalValue', currentTotalValue, 'minTotalValue', minTotalValue, 'startTime', startTime, 'bestStartTime', bestStartTime);
       if (!minTotalValue) {
         minTotalValue = currentTotalValue;
       } else if (currentTotalValue < minTotalValue) {
@@ -207,6 +207,32 @@ function addDeviceToSchedule(device, startTime, totalValue, output) {
   output.consumedEnergy.devices[device.id] = totalValue;
 
   return output;
+}
+
+// a stupid simple function to hide the fact that device power is given in watts,
+// and the rates are in kilowatt-hours
+function calculateHourlyCost(power, rate) {
+  const rateInKopecks = rate * 100; // not to have to deal with floating-point imprecision
+  const costInKopecksForWatts = power * rateInKopecks;
+
+  // back from kopecks to rubles, and from watts to kilowatts
+  return costInKopecksForWatts / (100 * 1000);
+}
+
+function formatOutput(output) {
+  // remove temporary fields from the final output
+  const withoutOmitted = R.omit(['remainingEnergy']);
+  const roundToFourDecimals = float => parseFloat(float.toFixed(4));
+
+  return R.merge(
+    withoutOmitted(output),
+    {
+      consumedEnergy: {
+        value: roundToFourDecimals(output.consumedEnergy.value),
+        devices: R.mapObjIndexed(cost => roundToFourDecimals(cost), output.consumedEnergy.devices)
+      }
+    }
+  );
 }
 
 module.exports = {

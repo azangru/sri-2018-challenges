@@ -1,0 +1,25 @@
+.scenario-widget {
+  width: 200px;
+  height: 100px;
+  background: var(--grey-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px;
+}
+
+.scenario-widget:hover {
+  box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+}
+
+.scenario-widget__name {
+  font-size: var(--font-size-small);
+  font-family: var(--font-arial-bold);
+}
+
+.scenario-widget__message {
+  font-size: var(--font-size-x-small);
+  font-family: var(--font-arial);
+}

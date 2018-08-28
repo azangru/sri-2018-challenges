@@ -1,0 +1,21 @@
+.device-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 120px;
+  background: #F7F7F7;
+  border-radius: 20px;
+  padding: 15px 16px 20px 16px;
+}
+
+.device-widget__name {
+  font-size: var(--font-size-small);
+  color: var(--dark-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.device-widget__message {
+  font-size: var(--font-size-x-small);
+  color: var(--light-grey-color);
+}

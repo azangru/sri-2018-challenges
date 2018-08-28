@@ -1,0 +1,214 @@
+.main-area {
+  width: 630px;
+  margin-left: 40px;
+}
+
+.main-area__header {
+  font-size: var(--font-size-large);
+  font-family: var(--font-arial-bold);
+  color: var(--dark-grey-color);
+  margin-bottom: 20px;
+}
+
+.main-area__body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 630px;
+  height: 331px;
+  background-image: url('../../assets/bg@1x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.main-area__summary {
+  padding-left: 26px;
+}
+
+.main-area__salutation {
+  margin-top: 30px;
+  font-size: 27px;
+  color: var(--dark-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.main-area__status {
+  font-size: var(--font-size-small);
+  margin-top: 8px;
+}
+
+.main-area__climate-summary {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.main-area__indoors-climate {
+  margin-right: 20px;
+}
+
+.main-area__indoors-climate-label, .main-area__outdoors-climate-label {
+  color: var(--light-grey-color);
+  font-size: var(--font-size-x-small);
+}
+
+.main-area__indoors-climate-temperature, .main-area__outdoors-climate-temperature {
+  font-size: 36px;
+  color: var(--dark-grey-color);
+  font-family: var(--font-arial-bold);
+}
+
+.main-area__outdoors-climate-data {
+  display: flex;
+  align-items: center;
+}
+
+.main-area__outdoors-climate-weather-icon {
+  margin-left: 8px;
+}
+
+.main-area__widgets {
+  position: relative;
+  width: 220px;
+  height: 331px;
+  overflow: hidden;
+}
+
+.main-area__widgets-inner-wrapper {
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  padding-right: 40px;
+  overflow-y: auto;
+}
+
+.main-area__widgets-inner-wrapper .device-widget {
+  margin-bottom: 15px;
+}
+
+.main-area__widgets-inner-wrapper .device-widget:first-of-type {
+  margin-top: 20px;
+}
+
+.main-area__widgets-inner-wrapper .device-widget:last-of-type {
+  margin-bottom: 20px;
+}
+
+.main-area__widgets-scroll-up, .main-area__widgets-scroll-down {
+  position: absolute;
+  height: 41px;
+  width: 200px;
+  background: #F7F7F7;
+  cursor: pointer;
+}
+
+.main-area__widgets-scroll-up {
+  top: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.main-area__widgets-scroll-down {
+  bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.main-area__widgets-scroll-up:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 4px);
+  background-image: url('../../assets/icons/arrow-double.svg');
+  transform: rotate(180deg);
+}
+
+.main-area__widgets-scroll-down:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 4px);
+  background-image: url('../../assets/icons/arrow-double.svg');
+}
+
+.main-area__widgets-scroll-up_hidden, .main-area__widgets-scroll-down_hidden {
+  display: none;
+}
+
+/* Retina-specific */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .main-area {
+    background-image: url('../../assets/bg@2x.png');
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .main-area {
+    width: calc(100% - 2 * 20px);
+    margin: 0 20px;
+  }
+
+  .main-area__body {
+    display: block;
+    /* display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto; */
+    width: 100%;
+    height: auto;
+    background-image: url('../../assets/bg@1x.png');
+    background-size: contain;
+    background-position: bottom;
+    padding-bottom: 20px;
+  }
+
+  .main-area__salutation {
+    margin-top: 20px;
+    font-size: var(--font-size-large);
+    color: var(--dark-grey-color);
+    font-family: var(--font-arial-bold);
+  }
+
+  .main-area__indoors-climate-temperature, .main-area__outdoors-climate-temperature {
+    font-size: 24px;
+  }
+
+  .main-area__outdoors-climate-weather-icon img {
+    height: 20px;
+  }
+
+  .main-area__widgets {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    --webkit-overflow-scrolling: touch;
+  }
+
+  .main-area__widgets-inner-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: auto;
+    padding-right: 0;
+  }
+
+  .main-area__widgets-inner-wrapper .device-widget.device-widget { /* a hack to increase specificity :-( */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .main-area__widgets-inner-wrapper .device-widget:first-child {
+    margin-left: 20px;
+  }
+
+  .main-area__widgets-scroll-up, .main-area__widgets-scroll-down {
+    display: none;
+  }
+
+}

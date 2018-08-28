@@ -1,0 +1,49 @@
+.knob {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.knob__dial-wrapper {
+  position: relative;
+}
+
+.knob__dial {
+  clip-path: polygon(0 0, 100% 1%, 100% 60%, 75% 56%, 38% 73%, 19% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.knob__dial_grey {
+  position: absolute;
+  bottom: 0;
+  filter: grayscale(100%);
+  clip-path: polygon(83% 54%, 100% 62%, 100% 84%, 78% 99%, 66% 78%);
+  pointer-events: none;
+}
+
+.knob__body {
+  top: 22px;
+  left: 22px;
+  position: absolute;
+  background: #fefefe;
+  box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);;
+  border-radius: 50%;
+  width: 178px;
+  height: 178px;
+}
+
+.knob__arrowhead {
+  position: absolute;
+  left: calc(50% - 6px);
+  top: 10px;
+  pointer-events: none;
+}
+
+.knob__temperature {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-arial-bold);
+  font-size: 66px;
+}

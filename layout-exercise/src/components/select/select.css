@@ -1,0 +1,35 @@
+.select {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.select__button {
+  background-color: var(--bright-yellow-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: var(--font-arial-bold);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.select__button::after {
+  content: '';
+  display: inline-block;
+  margin-left: 5px;
+  width: 10px;
+  height: 12px;
+  background-image: url('./arrow-down.svg');
+  background-size: cover;
+}
+
+.select select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+}

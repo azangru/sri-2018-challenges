@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Яндекс Дом</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
+</head>
+<body>
+  <%= require('html-loader!./partials/sidebar.html') %>
+  <div class="layout-container">
+    <%= require('html-loader!./partials/header.html') %>
+
+    <main>
+      <div class="main-area-container"></div>
+      <div class="selected-scenarios-container"></div>
+      <div class="selected-devices-container"></div>
+    </main>
+
+    <%= require('html-loader!./partials/footer.html') %>
+  </div>
+</body>
+</html>

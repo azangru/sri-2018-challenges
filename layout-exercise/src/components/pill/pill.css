@@ -1,0 +1,17 @@
+.pill {
+  padding: 8px 16px;
+  background-color: #F7F7F7;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: var(--font-arial-bold);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pill:not(:last-child) {
+  margin-right: 10px;
+}
+
+.pill_active {
+  background-color: var(--bright-yellow-color);
+}
